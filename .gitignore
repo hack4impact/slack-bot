@@ -31,6 +31,9 @@ build/
 /.next/
 /out/
 
+# ts
+/lib/
+
 # other
 .vercel
 .idea
