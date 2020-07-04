@@ -1,0 +1,35 @@
+on: [push]
+
+name: 'Deploy to Azure'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action' 
+      uses: actions/checkout@master
+   
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Setup Node 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    
+    - name: 'npm install, build, and test'
+      run: |
+        npm install
+        npm run build
+
+    # deploy web app using Azure credentials
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'h4i-slack-bot'
+
+    # Azure logout 
+    - name: logout
+      run: |
+        az logout
