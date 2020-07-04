@@ -1,10 +1,11 @@
 {
   "name": "slack-bot",
   "version": "0.0.1",
-  "description": "A Slack bot for our Hack4Impact chapters",
+  "description": "The Hack4Impact Slack bot",
   "main": "app.js",
   "scripts": {
-    "test": ""
+    "lint": "eslint --fix .",
+    "test": "mocha --require @babel/register"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,21 @@
   "bugs": {
     "url": "https://github.com/hack4impact/slack-bot/issues"
   },
-  "homepage": "https://github.com/hack4impact/slack-bot#readme"
+  "homepage": "https://github.com/hack4impact/slack-bot#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.4",
+    "chai": "^4.2.0",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-mocha": "^7.0.1",
+    "mocha": "^8.0.1"
+  },
+  "dependencies": {
+    "@slack/bolt": "^2.1.1",
+    "dotenv": "^8.2.0"
+  }
 }
