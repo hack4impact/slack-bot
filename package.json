@@ -4,6 +4,7 @@
   "description": "The Hack4Impact Slack bot",
   "main": "app.js",
   "scripts": {
+    "dev": "cross-env DEBUG=bot node lib/app.js",
     "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx ./",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
@@ -34,10 +35,14 @@
     "eslint-config-airbnb-typescript": "^8.0.2",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
     "typescript": "^3.9.6"
   },
   "dependencies": {
     "@slack/bolt": "^2.1.1",
+    "@types/debug": "^4.1.5",
+    "cross-env": "^7.0.2",
+    "debug": "^4.1.1",
     "dotenv": "^8.2.0"
   }
 }
