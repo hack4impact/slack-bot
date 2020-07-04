@@ -1,0 +1,19 @@
+{
+  "name": "slack-bot",
+  "version": "0.0.1",
+  "description": "A Slack bot for our Hack4Impact chapters",
+  "main": "app.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hack4impact/slack-bot.git"
+  },
+  "author": "",
+  "license": "GNU GPL 3.0",
+  "bugs": {
+    "url": "https://github.com/hack4impact/slack-bot/issues"
+  },
+  "homepage": "https://github.com/hack4impact/slack-bot#readme"
+}
