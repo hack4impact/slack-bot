@@ -15,6 +15,7 @@ const app:App = new App({
 
 (async () => {
   // Start the app
+
   await app.start(process.env.PORT || 3000);
   debug('⚡️ Bolt app is running!');
 })();
