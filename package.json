@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node lib/app.js",
-    "dev": "cross-env DEBUG=bot node lib/app.js",
+    "dev": "npm run build && cross-env DEBUG=bot,db node lib/app.js",
     "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx ./",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
