@@ -1,6 +1,7 @@
 import { App } from '@slack/bolt';
 import { config } from 'dotenv';
 import _debug from 'debug';
+import connection from './util/connection';
 
 const debug = _debug('bot');
 
@@ -13,6 +14,12 @@ const app:App = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
+// Give every listener MongoDB access
+app.use(async ({ next }) => {
+  await connection();
+  if (next) await next();
+});
+
 // Listens to incoming messages that contain "hello"
 app.message('hello123', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
@@ -20,6 +27,7 @@ app.message('hello123', async ({ message, say }) => {
 });
 
 (async () => {
+  await connection();
   // Start the app
   await app.start(process.env.PORT || 3000);
   debug('⚡️ Bolt app is running!');
