@@ -1,17 +1,13 @@
 import { App } from '@slack/bolt';
-import { config } from 'dotenv';
 import _debug from 'debug';
 import connection from './util/connection';
+import config from './util/config';
 
 const debug = _debug('bot');
 
-if (process.env.NODE_ENV !== 'production') {
-  config();
-}
-
 const app:App = new App({
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
-  token: process.env.SLACK_BOT_TOKEN,
+  signingSecret: config.slackSigningSecret,
+  token: config.slackBotToken,
 });
 
 // Give every listener MongoDB access
@@ -27,13 +23,11 @@ app.message('hello123', async ({ message, say }) => {
 });
 
 (async () => {
-  const port = process.env.PORT || 3000;
-
   debug('Boot sequence initiated...');
 
   await connection();
 
   // Start the app
-  await app.start(port);
+  await app.start(config.port);
   debug('🤖 Boot sequence complete!');
 })();

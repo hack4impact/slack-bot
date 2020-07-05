@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import _debug from 'debug';
+import config from './config';
 
 const debug = _debug('db');
 
@@ -9,8 +10,8 @@ const debug = _debug('db');
 export default async (dbName?:string, dbUrl?:string) => {
   if (mongoose.connections[0].readyState) return;
 
-  const url = dbUrl || process.env.MONGODB_URI || 'mongodb://localhost:27017/bog-bot';
-  const name = dbName || 'slack-bot';
+  const url = dbUrl || config.dbUrl;
+  const name = dbName || config.dbName;
 
   debug('Connecting to database...');
 
