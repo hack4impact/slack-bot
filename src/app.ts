@@ -27,8 +27,13 @@ app.message('hello123', async ({ message, say }) => {
 });
 
 (async () => {
+  const port = process.env.PORT || 3000;
+
+  debug('Boot sequence initiated...');
+
   await connection();
+
   // Start the app
-  await app.start(process.env.PORT || 3000);
-  debug('⚡️ Bolt app is running!');
+  await app.start(port);
+  debug('🤖 Boot sequence complete!');
 })();
