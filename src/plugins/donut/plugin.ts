@@ -30,6 +30,7 @@ export default async (app: App, pre: PrefixFunction) => {
 
       const donutSetup = new DonutSetup();
       donutSetup.groups.push(JSON.stringify(body.view));
+      donutSetup.save();
 
       // if (!body.view) {
       //   // TODO
