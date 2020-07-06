@@ -19,7 +19,7 @@ jobs:
       with:
         node-version: '12.x'
     
-    - name: 'npm install, build, and test'
+    - name: 'npm install and build'
       run: |
         npm install
         npm run build
