@@ -12,6 +12,7 @@ export default async (app: App, pre: PrefixFunction) => {
       await ack();
 
       const donutSetup = new DonutSetup();
+      await donutSetup.save();
 
       const response = await client.views.open({
         token: context.botToken,
