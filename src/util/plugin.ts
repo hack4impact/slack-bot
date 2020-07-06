@@ -31,9 +31,9 @@ interface Plugin {
 async function loadPlugins(app:App) {
   debug('Loading plugins...');
 
-  const pluginFolders:string[] = await fs.readdir(join(__dirname, '..', 'plugins'));
+  // load the plugin files
   const loadPromises = [];
-
+  const pluginFolders:string[] = await fs.readdir(join(__dirname, '..', 'plugins'));
   for (let i = 0; i < pluginFolders.length; i += 1) {
     const pluginPath = `../plugins/${pluginFolders[i]}`;
     loadPromises.push((async () => {
@@ -42,13 +42,16 @@ async function loadPlugins(app:App) {
       return { json, func };
     })());
   }
-  const plugins:Plugin[] = await Promise.all(loadPromises);
+
+  // register each plugin
   const pluginPromises = [];
+  const plugins:Plugin[] = await Promise.all(loadPromises);
+  debug(`${plugins.length} plugins detected.`);
   for (let i = 0; i < plugins.length; i += 1) {
     const plugin = plugins[i];
     const pre:PrefixFunction = (id) => `${plugin.json.slug}_${id}`;
     pluginPromises.push(plugin.func(app, pre).then(() => {
-      debug(`[${i + 1}/${plugins.length}] "${plugin.json.name}" v${plugin.json.version} loaded.`);
+      debug(`→ "${plugin.json.name}" v${plugin.json.version} loaded.`);
     }));
   }
   await Promise.all(pluginPromises);
