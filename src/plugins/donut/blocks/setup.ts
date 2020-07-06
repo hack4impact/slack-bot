@@ -101,7 +101,7 @@ export default (pre: PrefixFunction, model: IDonutSetup) => ({
           text: '➕ Add Group',
           emoji: true,
         },
-        value: pre('setup_add'),
+        action_id: pre('setup_add'),
       },
     },
   ],

@@ -24,6 +24,24 @@ export default async (app: App, pre: PrefixFunction) => {
     }
   });
 
+  app.action({ type: 'block_actions', action_id: pre('setup_add') }, async ({ ack, body }) => {
+    try {
+      await ack();
+
+      const donutSetup = new DonutSetup();
+      donutSetup.groups.push(JSON.stringify(body.view));
+
+      // if (!body.view) {
+      //   // TODO
+      //   return;
+      // }
+    } catch (e) {
+      // TODO
+    }
+
+    // TODO https://slack.dev/bolt-js/concepts#updating-pushing-views
+  });
+
   // app.message(pre('hello'), async ({ message, say }) => {
   //   // say() sends a message to the channel where the event was triggered
   //   await say(`Hey there <@${message.user}>!`);
