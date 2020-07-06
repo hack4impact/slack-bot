@@ -15,10 +15,8 @@ const app:App = new App({
   debug('Boot sequence initiated...');
 
   await db();
-
   await loadPlugins(app);
-
-  // Start the app
   await app.start(config.port);
+
   debug('🤖 Boot sequence complete!');
 })();
