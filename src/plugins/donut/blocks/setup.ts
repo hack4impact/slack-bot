@@ -21,6 +21,7 @@ export default (pre: PrefixFunction, model: IDonutSetup) => ({
       type: 'input',
       element: {
         type: 'radio_buttons',
+        block_id: 'interval',
         action_id: pre('setup_interval'),
         initial_option: {
           text: {
@@ -78,6 +79,7 @@ export default (pre: PrefixFunction, model: IDonutSetup) => ({
           type: 'input',
           element: {
             type: 'plain_text_input',
+            block_id: `g${i}`,
             action_id: pre(`setup_g${i}`),
             initial_value: (i <= model.groups.length) ? model.groups[i] : undefined,
           },
