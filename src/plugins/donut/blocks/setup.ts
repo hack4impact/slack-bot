@@ -74,14 +74,13 @@ export default (pre: PrefixFunction, model: IDonutSetup) => ({
       },
     },
     ...(function* populate() {
-      for (let i = 0; i < model.groups.length + 1; i += 1) {
+      for (let i = 0; i < model.groupCount; i += 1) {
         const input = {
           type: 'input',
           element: {
             type: 'plain_text_input',
             block_id: `g${i}`,
             action_id: pre(`setup_g${i}`),
-            initial_value: (i <= model.groups.length) ? model.groups[i] : undefined,
           },
           label: {
             type: 'plain_text',
