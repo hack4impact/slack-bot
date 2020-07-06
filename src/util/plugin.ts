@@ -29,7 +29,7 @@ async function loadPlugins(app:App) {
   const pluginFolders:string[] = await fs.readdir(join(__dirname, '..', 'plugins'));
   const loadPromises = [];
   for (let i = 0; i < pluginFolders.length; i += 1) {
-    const pluginPath = `./plugins/${pluginFolders[i]}`;
+    const pluginPath = `../plugins/${pluginFolders[i]}`;
     loadPromises.push((async () => {
       const json:PluginJSON = JSON.parse((await fs.readFile(join(__dirname, pluginPath, 'plugin.json'))).toString());
       const func:PluginFunction = (await import(`${pluginPath}/plugin`)).default;
