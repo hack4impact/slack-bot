@@ -26,7 +26,7 @@ interface Plugin {
 
 // Some TypeScript wizardy that dynamically loads plugins
 async function loadPlugins(app:App) {
-  const pluginFolders:string[] = await fs.readdir(join(__dirname, 'plugins'));
+  const pluginFolders:string[] = await fs.readdir(join(__dirname, '..', 'plugins'));
   const loadPromises = [];
   for (let i = 0; i < pluginFolders.length; i += 1) {
     const pluginPath = `./plugins/${pluginFolders[i]}`;
