@@ -2,8 +2,15 @@ import type { App } from '@slack/bolt';
 import { promises as fs } from 'fs';
 import { join } from 'path';
 
+/**
+ * A handy function that prefixes any ID string you
+ * give it with your plugin's slug
+ */
 type PrefixFunction = (id:string) => string;
 
+/**
+ * The JSON metadata file for your plugin
+ */
 interface PluginJSON {
   name: string,
   version: string,
