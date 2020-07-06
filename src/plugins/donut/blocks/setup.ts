@@ -19,9 +19,9 @@ export default (pre: PrefixFunction, model: IDonutSetup) => ({
   blocks: [
     {
       type: 'input',
+      block_id: 'interval',
       element: {
         type: 'radio_buttons',
-        block_id: 'interval',
         action_id: pre('setup_interval'),
         initial_option: {
           text: {
@@ -77,9 +77,9 @@ export default (pre: PrefixFunction, model: IDonutSetup) => ({
       for (let i = 0; i < model.groupCount; i += 1) {
         const input = {
           type: 'input',
+          block_id: `g${i}`,
           element: {
             type: 'plain_text_input',
-            block_id: `g${i}`,
             action_id: pre(`setup_g${i}`),
           },
           label: {
