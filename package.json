@@ -13,6 +13,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --copy-files --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hack4impact/slack-bot.git"
