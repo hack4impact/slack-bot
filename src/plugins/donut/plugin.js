@@ -22,7 +22,7 @@ export default async (app, pre) => {
         return;
       }
 
-      const view = response.view;
+      const { view } = response;
       donutSetup.viewId = view.id;
       await donutSetup.save();
     } catch (e) {
