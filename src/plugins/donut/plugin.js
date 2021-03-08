@@ -1,10 +1,7 @@
-import type { App } from '@slack/bolt';
-import type { PrefixFunction } from '../../util/plugin';
-
 import DonutSetup from './models/setup';
 import donutSetupBlock from './blocks/setup';
 
-export default async (app: App, pre: PrefixFunction) => {
+export default async (app, pre) => {
   app.shortcut(pre('new'), async ({
     shortcut, ack, context, client,
   }) => {
@@ -25,7 +22,7 @@ export default async (app: App, pre: PrefixFunction) => {
         return;
       }
 
-      const view = response.view as { id:string };
+      const view = response.view;
       donutSetup.viewId = view.id;
       await donutSetup.save();
     } catch (e) {
@@ -59,9 +56,4 @@ export default async (app: App, pre: PrefixFunction) => {
       // TODO
     }
   });
-
-  // app.message(pre('hello'), async ({ message, say }) => {
-  //   // say() sends a message to the channel where the event was triggered
-  //   await say(`Hey there <@${message.user}>!`);
-  // });
 };

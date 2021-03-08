@@ -1,19 +1,17 @@
-import type { IDonutSetup } from '../models/setup';
-import type { PrefixFunction } from '../../../util/plugin';
 
-export default (pre: PrefixFunction, model: IDonutSetup) => ({
-  type: 'modal' as 'modal' || 'home',
+export default (pre, model) => ({
+  type: 'modal',
   title: {
-    type: 'plain_text' as 'plain_text',
+    type: 'plain_text',
     text: 'We ♥ Donut Dates 🍩',
     emoji: true,
   },
   submit: {
-    type: 'plain_text' as 'plain_text',
+    type: 'plain_text',
     text: 'Submit',
   },
   close: {
-    type: 'plain_text' as 'plain_text',
+    type: 'plain_text',
     text: 'Cancel',
   },
   blocks: [
