@@ -1,4 +1,3 @@
-//Carsen
 import { App } from '@slack/bolt';
 import _debug from 'debug';
 import db from './util/db';

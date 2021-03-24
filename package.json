@@ -8,7 +8,11 @@
     "dev": "npm run build && cross-env DEBUG=bot,db,plugins node lib/app.js",
     "eslint": "eslint --fix --ext .js,.jsx ./",
     "build": "npm run build:js",
-    "build:js": "babel src --copy-files --out-dir lib --extensions \".js,.jsx\" --source-maps inline"
+    "build:js": "babel src --copy-files --out-dir lib --extensions \".js,.jsx\" --source-maps inline",
+    "secrets": "npm run secrets:logout && cross-env-shell BW_SESSION=`bw login gt.engineering@hack4impact.org --raw` \"npm run secrets:sync\"",
+    "secrets:logout": "(bw logout || exit 0)",
+    "secrets:login": "bw login gt.engineering@hack4impact.org",
+    "secrets:sync": "bw sync && bw get item e7ea715a-4f83-4987-aa8d-acf50155a62e | fx .notes > \".env\""
   },
   "repository": {
     "type": "git",
@@ -27,17 +31,19 @@
     "@babel/eslint-plugin": "^7.13.0",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.9",
+    "@bitwarden/cli": "^1.15.1",
     "chai": "^4.2.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.21.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "fx": "^20.0.2"
   },
   "dependencies": {
     "@slack/bolt": "^3.2.0",
-    "cross-env": "^7.0.2",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "mongoose": "^5.9.21"
