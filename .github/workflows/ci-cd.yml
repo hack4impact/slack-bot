@@ -27,7 +27,7 @@ jobs:
     # deploy web app using Azure credentials
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: 'h4i-slack-bot'
+        app-name: 'bog-s21-slackbot'
 
     # Azure logout 
     - name: logout
