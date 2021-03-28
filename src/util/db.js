@@ -7,7 +7,7 @@ const debug = _debug('db');
 /**
  * Establishes a connection to MongoDB if one does not already exist.
  */
-export default async (dbName?:string, dbUrl?:string) => {
+export default async (dbName, dbUrl) => {
   if (mongoose.connections[0].readyState) return;
 
   const url = dbUrl || config.dbUrl;
