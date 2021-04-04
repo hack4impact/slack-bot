@@ -9,4 +9,4 @@ export default async (app) => {
   })
 }
 
-var pizza_msg = 'Hello, <@${message.user}>! What a silly question. Try :bell_pepper: or :bacon: or heck, just :cheese:!!';
+var pizza_msg = `Hello, <@${message.user}>! What a silly question. Try :bell_pepper: or :bacon: or heck, just :cheese:!!`;
