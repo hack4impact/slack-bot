@@ -1,0 +1,23 @@
+{
+  "name": "Bits of Good General Meeting",
+  "date": "Feb 16, 2021",
+  "slide": [{
+    "product": [{
+      "speakers": ["Max", "Daniel"],
+      "tldr": "Product critique times finalized, sign up in slack",
+      "events": "Product Critiques on Discord: Feb 20th - 25th"
+    }],
+    "design": [{
+      "speakers": ["Chaebin", "Chaeeun"],
+      "tldr": "User research workshop!",
+      "events": "User Research Workshop: Feb 20th @ 2:00pm EST"
+    }],
+    "executive": [{
+      "speakers": ["Max"],
+      "tldr": "Notion updates! Check out the 'Positions' page!",
+      "events": "n/a, check back soon!"
+    }]
+  }],
+  "full-video": "https://www.youtube.com/watch?v=ivnGsYRGyGk",
+  "check-in": "https://tinyurl.com/s21-bog-check-in"
+}
