@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 export default async (app) => {
   app.message(((`Update me`), async ({message, say}) => {
     await say(msg_opener);
