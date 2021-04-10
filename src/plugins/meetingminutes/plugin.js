@@ -8,7 +8,6 @@ export default async (app) => {
 let msg_opener = `Extra extra! Read all about it! Here are the most recent notes from the ` + date + ` ` + title + ` :rolled_up_newspaper:`;
 let msg_tldr = `TLDR: ` + tldr;
 let msg_events = `Events: ` + events;
-// FIXME fetch parameters
 let title, date, tldr, events;
 fetch("./data/meeting.json")
   .then(function(resp) {
