@@ -6,46 +6,47 @@
   "scripts": {
     "start": "node lib/app.js",
     "dev": "npm run build && cross-env DEBUG=bot,db,plugins node lib/app.js",
-    "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx ./",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch",
-    "build": "npm run build:types && npm run build:js",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --copy-files --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
+    "eslint": "eslint --fix --ext .js,.jsx ./",
+    "build": "npm run build:js",
+    "build:js": "babel src --copy-files --out-dir lib --extensions \".js,.jsx\" --source-maps inline",
+    "secrets": "npm run secrets:logout && cross-env-shell BW_SESSION=`bw login gt.engineering@hack4impact.org --raw` \"npm run secrets:sync\"",
+    "secrets:logout": "(bw logout || exit 0)",
+    "secrets:login": "bw login gt.engineering@hack4impact.org",
+    "secrets:sync": "bw sync && bw get item e7ea715a-4f83-4987-aa8d-acf50155a62e | fx .notes > \".env\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hack4impact/slack-bot.git"
   },
   "author": "",
-  "license": "GNU GPL 3.0",
+  "license": "GPLV3",
   "bugs": {
     "url": "https://github.com/hack4impact/slack-bot/issues"
   },
   "homepage": "https://github.com/hack4impact/slack-bot#readme",
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
-    "@babel/core": "^7.10.4",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
-    "@typescript-eslint/eslint-plugin": "^3.5.0",
-    "@typescript-eslint/parser": "^3.5.0",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/eslint-parser": "^7.13.8",
+    "@babel/eslint-plugin": "^7.13.0",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
+    "@bitwarden/cli": "^1.15.1",
     "chai": "^4.2.0",
-    "eslint": "^7.4.0",
-    "eslint-config-airbnb-typescript": "^8.0.2",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
-    "typescript": "^3.9.6"
+    "cross-env": "^7.0.3",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "fx": "^20.0.2"
   },
   "dependencies": {
-    "@slack/bolt": "^2.1.1",
-    "@types/debug": "^4.1.5",
-    "@types/mongoose": "^5.7.29",
-    "cross-env": "^7.0.2",
+    "@slack/bolt": "^3.2.0",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.9.21"
+    "mongoose": "^5.9.21",
+    "node-fetch": "^2.2.0"
   }
 }

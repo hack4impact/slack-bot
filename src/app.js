@@ -6,7 +6,7 @@ import loadPlugins from './util/plugin';
 
 const debug = _debug('bot');
 
-const app:App = new App({
+const app = new App({
   signingSecret: config.slackSigningSecret,
   token: config.slackBotToken,
 });
