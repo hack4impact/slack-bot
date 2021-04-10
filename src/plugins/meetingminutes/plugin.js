@@ -9,7 +9,15 @@ let msg_opener = `Extra extra! Read all about it! Here are the most recent notes
 let msg_tldr = `TLDR: ` + tldr;
 let msg_events = `Events: ` + events;
 // FIXME fetch parameters
-let title = await fetch(msg_title);
-let date = await fetch(msg_date);
-let tldr = await fetch(msg_tldr);
-let events = await fetch(msg_events);
+let title, date, tldr, events;
+fetch("./data/meeting.json")
+  .then(function(resp) {
+    return resp.json();
+  })
+  .then(function(data) {
+    console.log(data);
+    title = data.title;
+    date = data.date;
+    tldr = data.tldr;
+    events = data.events;
+  });
